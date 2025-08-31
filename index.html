@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Visor de Skin 3D</title>
-<style>
-  body {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    margin:0;
-    background:#f0f0f0;
-  }
-  canvas { border:1px solid #ccc; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visor de Skin 3D</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    canvas {
+      border: 1px solid #ccc;
+    }
+  </style>
 </head>
 <body>
 
 <canvas id="skinViewer" width="400" height="600"></canvas>
 
-<!-- Usamos Skin3D, versión UMD/global para navegador -->
-<script src="https://cdn.jsdelivr.net/gh/MinecraftCapes/skin3d@master/skin3d.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skin3d@0.0.12/dist/skin3d.min.js"></script>
 <script>
   const canvas = document.getElementById('skinViewer');
   const skinPath = 'assets/tu_skin.png'; // tu skin dentro de assets
