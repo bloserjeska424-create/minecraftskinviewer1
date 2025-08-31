@@ -6,30 +6,27 @@
 <title>Visor de Skin 3D</title>
 <style>
   body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+    background:#f0f0f0;
   }
-  canvas {
-    border: 1px solid #ccc;
-  }
+  canvas { border:1px solid #ccc; }
 </style>
 </head>
 <body>
 
 <canvas id="skinViewer" width="400" height="600"></canvas>
 
-<!-- Usamos skin3d.js, que funciona en navegadores sin módulos -->
+<!-- Usamos Skin3D, versión UMD/global para navegador -->
 <script src="https://cdn.jsdelivr.net/gh/MinecraftCapes/skin3d@master/skin3d.min.js"></script>
 <script>
-  // Creamos el visor
   const canvas = document.getElementById('skinViewer');
-  const skinPath = 'assets/tu_skin.png'; // tu skin dentro de la carpeta assets
+  const skinPath = 'assets/tu_skin.png'; // tu skin dentro de assets
 
-  // Inicializamos el visor
+  // Inicializamos el visor 3D
   const viewer = new Skin3D(canvas, {
     width: 400,
     height: 600,
@@ -37,7 +34,7 @@
     autoRotate: true
   });
 
-  // Rotación automática
+  // Inicia la rotación automática
   viewer.start();
 </script>
 
