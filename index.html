@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visor de Skin 3D</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
-    canvas {
-      border: 1px solid #ccc;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visor de Skin 3D</title>
+<style>
+  body { display:flex; justify-content:center; align-items:center; height:100vh; margin:0; background:#f0f0f0; }
+  canvas { border:1px solid #ccc; }
+</style>
 </head>
 <body>
-  <canvas id="skinViewer" width="400" height="600"></canvas>
-  <script src="https://cdn.jsdelivr.net/npm/skinview3d@2.0.0-alpha.10/dist/skinview3d.min.js"></script>
-  <script>
+<canvas id="skinViewer" width="400" height="600"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/skinview3d@2.0.0-alpha.10/dist/skinview3d.min.js"></script>
+<script>
+  const canvas = document.getElementById('skinViewer');
+  const skinPath = 'assets/tu_skin.png'; // Asegúrate que coincida exactamente
+
+  const img = new Image();
+  img.src = skinPath;
+  img.onload = () => {
     const viewer = new skinview3d.View({
-      canvas: document.getElementById('skinViewer'),
+      canvas: canvas,
       width: 400,
       height: 600,
-      skin: 'assets/tu_skin.png' // Asegúrate de que el nombre del archivo coincida
+      skin: skinPath
     });
-
     viewer.autoRotate = true;
     viewer.animation = new skinview3d.WalkingAnimation();
-  </script>
+  };
+</script>
 </body>
 </html>
+
 
