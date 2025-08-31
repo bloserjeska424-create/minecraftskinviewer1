@@ -63,10 +63,9 @@ document.getElementById('redoBtn').addEventListener('click', () => {
   }
 });
 
-// Capturar rotación automática para historial
+// Animación de rotación automática
 function animate() {
   viewer.rotation.y += 0.01;
-  saveRotation();
   requestAnimationFrame(animate);
 }
 animate();
@@ -79,13 +78,17 @@ canvas.addEventListener('wheel', (e) => {
   if(viewer.camera.position.z > 10) viewer.camera.position.z = 10;
 });
 
-// Cargar skin desde archivo
+// Cargar skin desde archivo y previsualizar correctamente
 document.getElementById('uploadSkin').addEventListener('change', (e) => {
   const file = e.target.files[0];
   if(file) {
     const reader = new FileReader();
     reader.onload = () => {
-      viewer.skin = reader.result;
+      const img = new Image();
+      img.src = reader.result;
+      img.onload = () => {
+        viewer.loadSkin(img.src);
+      };
     };
     reader.readAsDataURL(file);
   }
