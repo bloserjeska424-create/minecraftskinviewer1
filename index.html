@@ -5,32 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Visor de Skin 3D</title>
 <style>
-  body { display:flex; justify-content:center; align-items:center; height:100vh; margin:0; background:#f0f0f0; }
-  canvas { border:1px solid #ccc; }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  canvas {
+    border: 1px solid #ccc;
+  }
 </style>
 </head>
 <body>
+
 <canvas id="skinViewer" width="400" height="600"></canvas>
 
-<script type="module">
-  import { View, WalkingAnimation } from 'https://cdn.jsdelivr.net/npm/skinview3d@2.0.0-alpha.10/dist/skinview3d.min.js';
-
+<!-- Usamos skin3d.js, que funciona en navegadores sin módulos -->
+<script src="https://cdn.jsdelivr.net/gh/MinecraftCapes/skin3d@master/skin3d.min.js"></script>
+<script>
+  // Creamos el visor
   const canvas = document.getElementById('skinViewer');
-  const skinPath = 'assets/tu_skin.png'; // Reemplaza si tu skin tiene otro nombre
+  const skinPath = 'assets/tu_skin.png'; // tu skin dentro de la carpeta assets
 
-  // Aseguramos que la imagen cargue antes de crear el visor
-  const img = new Image();
-  img.src = skinPath;
-  img.onload = () => {
-    const viewer = new View({
-      canvas: canvas,
-      width: 400,
-      height: 600,
-      skin: skinPath
-    });
-    viewer.autoRotate = true;
-    viewer.animation = new WalkingAnimation();
-  };
+  // Inicializamos el visor
+  const viewer = new Skin3D(canvas, {
+    width: 400,
+    height: 600,
+    skin: skinPath,
+    autoRotate: true
+  });
+
+  // Rotación automática
+  viewer.start();
 </script>
 
 </body>
